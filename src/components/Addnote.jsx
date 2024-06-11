@@ -47,11 +47,22 @@ const Addnote = () => {
             id="desc"
             onChange={onChange}
           />
+          <br/>
+          <label htmlFor="description" className="form-label">
+            tag:
+          </label>
+          <br/>
+          <input
+            type="text"
+            name="tag"
+            id="tag"
+            onChange={onChange}
+          />
         </div>
         </div>
         
         <button type="submit" className="btn btn-primary" onClick={handleClick}>
-          Submit
+         Add note
         </button>
       </form>
     </div>
