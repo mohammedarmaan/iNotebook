@@ -1,0 +1,61 @@
+import {React, useContext, useState} from "react";
+import noteContext from '../context/notes/noteContext'
+
+const Addnote = () => {
+    const context = useContext(noteContext)
+    const [note, setNote] = useState({title: "", description: "", tag: ""}) // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
+    const {addNote} = context;
+
+    const handleClick = (e) => {
+        e.preventDefault();
+        addNote(note.title, note.description, note.tag)
+
+    }
+
+    const onChange = (e) => {
+      setNote({...note, [e.target.name]: e.target.value});
+
+    }
+    
+
+  return (
+    <div className="container my-5">
+      <h2>Add your note</h2>
+      <form>
+        <div className="row">
+        <div className="mb-3 col-md-6">
+          <label htmlFor="title" className="form-label">
+            Title:
+          </label>
+          <br/>
+          <input
+            type="text"
+            name="title"
+            id="title"
+            aria-describedby="emailHelp"
+            onChange={onChange}
+          />
+        </div>
+        <div className="mb-3 col-md-6">
+          <label htmlFor="description" className="form-label">
+            description:
+          </label>
+          <br/>
+          <input
+            type="text"
+            name="description"
+            id="desc"
+            onChange={onChange}
+          />
+        </div>
+        </div>
+        
+        <button type="submit" className="btn btn-primary" onClick={handleClick}>
+          Submit
+        </button>
+      </form>
+    </div>
+  );
+};
+
+export default Addnote;
