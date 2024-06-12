@@ -3,9 +3,11 @@ import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
 
+
+
 const Notes = () => {
   const context = useContext(noteContext);
-  const { notes, getNotes } = context;
+  const { notes, getNotes, editNote } = context;
   const [note, setNote] = useState({etitle: "", edescription: "", etag: ""}) // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
    
   const ref = useRef(null)
@@ -21,7 +23,7 @@ const Notes = () => {
 
 
   const handleClick = (e) => {
-    setNote(note)
+    editNote(note.id, note.etitle, note.edescription, note.etag)
     e.preventDefault();
     
 
