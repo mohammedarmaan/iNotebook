@@ -8,9 +8,10 @@ import Addnote from "./Addnote";
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
-  const [note, setNote] = useState({etitle: "", edescription: "", etag: ""}) // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
+  const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""}) // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
    
   const ref = useRef(null)
+  const refclose = useRef(null)
 
   useEffect(() => {
     getNotes();
@@ -18,14 +19,14 @@ const Notes = () => {
 
   const updatenote = (currentnote) => {
     ref.current.click()
-    setNote({etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag})
+    setNote({id: currentnote._id, etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag})
   };
 
 
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag)
     e.preventDefault();
-    
+    ref.current.click()   
 
 }
 
@@ -124,7 +125,7 @@ const onChange = (e) => {
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" onClick={handleClick}>
+              <button type="button" class="btn btn-primary" onClick={handleClick} ref={refclose}>
                 Update Note
               </button>
             </div>

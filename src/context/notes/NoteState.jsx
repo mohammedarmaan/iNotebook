@@ -88,7 +88,7 @@ const NoteState = (props) => {
     const response = await fetch(
       `http://localhost:5000/api/notes/updatenote/${id}`,
       {
-        method: "POST",
+        method: "PUT",
         headers: {
           "Content-Type": "application/json",
           "auth-token":
@@ -101,15 +101,18 @@ const NoteState = (props) => {
     const json = response.json();
     console.log(json);
 
+    let newnotes = JSON.parse(JSON.stringify(notes))
     // logic to edit in client side
-    for (let index = 0; index < notes.length; index++) {
-      const element = notes[index];
+    for (let index = 0; index < newnotes.length; index++) {
+      const element = newnotes[index];
       if (element._id == id) {
-        element.title = title;
-        element.description = description;
-        element.tag = tag;
+        newnotes[index].title = title;
+        newnotes[index].description = description;
+        newnotes[index].tag = tag;
+      break;
       }
     }
+    setNotes(newnotes)
   };
   return (
     <NoteContext.Provider
