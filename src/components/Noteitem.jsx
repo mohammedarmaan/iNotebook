@@ -21,13 +21,20 @@ const Noteitem = (props) => {
             </p>
             <a
               href="#"
-              className="btn btn-danger" onClick={() => {
+              className="btn btn-danger"
+              onClick={() => {
                 deleteNote(note._id);
               }}
             >
               <i className="fa-solid fa-trash"></i>
             </a>
-            <a href="#" className="btn btn-primary mx-3 " onClick={()=>{updatenote(note)}}>
+            <a
+              href="#"
+              className="btn btn-primary mx-3 "
+              onClick={() => {
+                updatenote(note);
+              }}
+            >
               <i className="fa-solid fa-pen-to-square"></i>
             </a>
           </div>

@@ -34,6 +34,8 @@ const Addnote = () => {
             id="title"
             aria-describedby="emailHelp"
             onChange={onChange}
+            minLength={3}
+            requiured
           />
         </div>
         <div className="mb-3 col-md-6">
@@ -46,6 +48,8 @@ const Addnote = () => {
             name="description"
             id="desc"
             onChange={onChange}
+            minLength={5}
+            requiured
           />
           <br/>
           <label htmlFor="description" className="form-label">
@@ -57,6 +61,8 @@ const Addnote = () => {
             name="tag"
             id="tag"
             onChange={onChange}
+            
+            requiured
           />
         </div>
         </div>

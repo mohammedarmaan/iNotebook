@@ -3,37 +3,42 @@ import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
 
-
-
 const Notes = () => {
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
-  const [note, setNote] = useState({id: "", etitle: "", edescription: "", etag: ""}) // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
-   
-  const ref = useRef(null)
-  const refclose = useRef(null)
+  const [note, setNote] = useState({
+    id: "",
+    etitle: "",
+    edescription: "",
+    etag: "",
+  }); // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
+
+  const ref = useRef(null);
+  const refclose = useRef(null);
 
   useEffect(() => {
     getNotes();
   }, []);
 
   const updatenote = (currentnote) => {
-    ref.current.click()
-    setNote({id: currentnote._id, etitle: currentnote.title, edescription: currentnote.description, etag: currentnote.tag})
+    ref.current.click();
+    setNote({
+      id: currentnote._id,
+      etitle: currentnote.title,
+      edescription: currentnote.description,
+      etag: currentnote.tag,
+    });
   };
 
-
   const handleClick = (e) => {
-    editNote(note.id, note.etitle, note.edescription, note.etag)
+    editNote(note.id, note.etitle, note.edescription, note.etag);
     e.preventDefault();
-    ref.current.click()   
+    ref.current.click();
+  };
 
-}
-
-const onChange = (e) => {
-  setNote({...note, [e.target.name]: e.target.value});
-
-}
+  const onChange = (e) => {
+    setNote({ ...note, [e.target.name]: e.target.value });
+  };
 
   return (
     <>
@@ -54,7 +59,6 @@ const onChange = (e) => {
         id="exampleModal"
         tabindex="-1"
         aria-labelledby="exampleModalLabel"
-       
         aria-hidden="true"
       >
         <div class="modal-dialog">
@@ -71,51 +75,49 @@ const onChange = (e) => {
               ></button>
             </div>
             <div class="modal-body">
-
-            <form>
-        <div className="row">
-        <div className="mb-3 col-md-6">
-          <label htmlFor="title" className="form-label">
-            Title:
-          </label>
-          <br/>
-          <input
-            type="text"
-            name="etitle"
-            id="etitle"
-            aria-describedby="emailHelp"
-            onChange={onChange}
-            value={note.etitle}
-          />
-        </div>
-        <div className="mb-3 col-md-6">
-          <label htmlFor="description" className="form-label">
-            description:
-          </label>
-          <br/>
-          <input
-            type="text"
-            name="edescription"
-            id="edesc"
-            onChange={onChange}
-            value={note.edescription}
-          />
-          <br />
-          <label htmlFor="tag" className="form-label">
-            tag:
-          </label>
-          <br/>
-          <input
-            type="text"
-            name="etag"
-            id="etag"
-            onChange={onChange}
-            value={note.etag}
-          />
-        </div>
-        </div>
-        
-      </form>
+              <form>
+                <div className="row">
+                  <div className="mb-3 col-md-6">
+                    <label htmlFor="title" className="form-label">
+                      Title:
+                    </label>
+                    <br />
+                    <input
+                      type="text"
+                      name="etitle"
+                      id="etitle"
+                      aria-describedby="emailHelp"
+                      onChange={onChange}
+                      value={note.etitle}
+                    />
+                  </div>
+                  <div className="mb-3 col-md-6">
+                    <label htmlFor="description" className="form-label">
+                      description:
+                    </label>
+                    <br />
+                    <input
+                      type="text"
+                      name="edescription"
+                      id="edesc"
+                      onChange={onChange}
+                      value={note.edescription}
+                    />
+                    <br />
+                    <label htmlFor="tag" className="form-label">
+                      tag:
+                    </label>
+                    <br />
+                    <input
+                      type="text"
+                      name="etag"
+                      id="etag"
+                      onChange={onChange}
+                      value={note.etag}
+                    />
+                  </div>
+                </div>
+              </form>
             </div>
             <div class="modal-footer">
               <button
@@ -125,7 +127,12 @@ const onChange = (e) => {
               >
                 Close
               </button>
-              <button type="button" class="btn btn-primary" onClick={handleClick} ref={refclose}>
+              <button
+                type="button"
+                class="btn btn-primary"
+                onClick={handleClick}
+                ref={refclose}
+              >
                 Update Note
               </button>
             </div>
@@ -133,8 +140,13 @@ const onChange = (e) => {
         </div>
       </div>
 
-      <div className="row my-5">
+
+
+
+
+      <div className="container row my-5">
         <h2>Your notes</h2>
+        <div className="container">{notes.length === 0 && "No notes  "}</div>
         {notes.map((note) => {
           return (
             <Noteitem key={note._id} note={note} updatenote={updatenote} />
