@@ -17,7 +17,7 @@ const jwt_secret = "Armaanisagoodboy";
 const { body, validationResult } = require("express-validator");
 
 var fetchuser = require('../middleware/fetchuser')
-
+let success = false;
 // Route 1:
 
 //  Create a user using POST   endpoint: "/api/auth/createuser".Doesn't require auth
@@ -34,7 +34,7 @@ router.post(
     // if ther are errors return Bad Request and the errors
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
-      return res.status(400).json({ errors: errors.array() });
+      return res.status(400).json({ success, errors: errors.array() });
     }
 
     // Create an User
@@ -46,7 +46,7 @@ router.post(
       if (user) {
         return res
           .status(400)
-          .json({ error: "Sorry! User with this email already exists" });
+          .json({ success, error: "Sorry! User with this email already exists" });
       }
       // generate salt:
       const salt = await bcrypt.genSalt(10);
@@ -66,12 +66,13 @@ router.post(
         },
       };
       const authtoken = jwt.sign(data, jwt_secret);
-      res.json({ authtoken });
+      success = true
+      res.json({ success, authtoken });
 
       // res.json(user);
     } catch (error) {
       console.error(error.message);
-      res.status(500).json({ message: "Internal Server error occured" });
+      res.status(500).json({ success, message: "Internal Server error occured" });
     }
   }
 );
@@ -103,7 +104,7 @@ router.post(
 
       // If user doesn't exist
       if (!user) {
-        return res.status(400).json({ error: "login credentials are wrong" });
+        return res.status(400).json({ success, error: "login credentials are wrong" });
       }
 
       // now we'll ccompare password
@@ -112,7 +113,7 @@ router.post(
 
       // If password doesn't match
       if (!passwordCompare) {
-        return res.status(400).json({ error: "login credentials are wrong" });
+        return res.status(400).json({success, error: "login credentials are wrong" });
       }
 
       // If password is correct send the auth token
@@ -122,7 +123,8 @@ router.post(
         },
       };
       const authtoken = jwt.sign(data, jwt_secret);
-      res.json({ authtoken });
+      success = true;
+      res.json({ success, authtoken });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error occured" });
