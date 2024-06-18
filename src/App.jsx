@@ -10,6 +10,8 @@ import Home from "./components/Home";
 import About from "./components/About";
 import NoteState from "./context/notes/NoteState.jsx";
 import Alert from "./components/Alert.jsx";
+import Signin from "./components/Signin.jsx";
+import Signup from "./components/Signup.jsx";
 
 
 function App() {
@@ -24,6 +26,8 @@ function App() {
             <Routes>
               <Route path="/" element={<Home />} />
               <Route path="/about" element={<About />} />
+              <Route path="/signin" element={<Signin />} />
+              <Route path="/signup" element={<Signup />} />
             </Routes>
           </div>
         </BrowserRouter>
