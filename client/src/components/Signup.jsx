@@ -73,7 +73,7 @@ const Signup = ( props ) => {
                     className="form-control"
                     id="email"
                     name="email"
-                    placeholder="name@example.com"
+                    placeholder="statham@gmail.com"
                     value={credentials.email}
                     onChange={onChange}
                     required
