@@ -23,7 +23,7 @@ app.use('/api/notes', require('./routes/notes'))
 // app.use('/api/auth', require('./routes/auth')) means that any requests to /api/auth will be handled by the routes defined in ./routes/auth.
 
 app.get('/', (req, res) => {
-  res.send("hello")
+  res.json("hello")
 })
 
 app.listen(port, () => {
