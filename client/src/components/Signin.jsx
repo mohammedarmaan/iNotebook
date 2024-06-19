@@ -8,7 +8,7 @@ const Signin = ({ showAlert }) => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`http://localhost:5000/api/auth/login`, {
+    const response = await fetch(`https://notebook-api-orpin.vercel.app/api/auth/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

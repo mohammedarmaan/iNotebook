@@ -11,7 +11,7 @@ const NoteState = (props) => {
   const getNotes = async () => {
     //API call
     const response = await fetch(
-      `http://localhost:5000/api/notes/fetchallnotes`,
+      `https://notebook-api-orpin.vercel.app/api/notes/fetchallnotes`,
       {
         method: "GET",
         headers: {
@@ -28,7 +28,7 @@ const NoteState = (props) => {
   const addNote = async (title, description, tag) => {
 
     //API call
-    const response = await fetch(`http://localhost:5000/api/notes/addnote`, {
+    const response = await fetch(`https://notebook-api-orpin.vercel.app/api/notes/addnote`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -60,7 +60,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     //API call
     const response = await fetch(
-      `http://localhost:5000/api/notes/deletenote/${id}`,
+      `https://notebook-api-orpin.vercel.app/notes/deletenote/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -84,7 +84,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, description, tag) => {
     //API call
     const response = await fetch(
-      `http://localhost:5000/api/notes/updatenote/${id}`,
+      `https://notebook-api-orpin.vercel.app/notes/updatenote/${id}`,
       {
         method: "PUT",
         headers: {
