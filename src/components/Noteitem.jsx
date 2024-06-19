@@ -14,10 +14,10 @@ const Noteitem = (props) => {
           <div className="card-body">
             <h5 className="card-title">{note.title}</h5>
             <p className="card-text">
-              <p>{note.description}</p>
+              {note.description}
             </p>
             <p className="card-text">
-              <p>{note.tag}</p>
+              {note.tag}
             </p>
             <a
               href="#"
