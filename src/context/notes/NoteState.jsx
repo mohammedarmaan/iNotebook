@@ -16,8 +16,7 @@ const NoteState = (props) => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY1MWRjZjc4ZWE3YjIxMmY1MjE5Y2Y4In0sImlhdCI6MTcxNzI1NDQ0Mn0.C26YmvCYh2SO2YelkKJwb4MPT8HS_lVia0ae9ehwkrs",
+          "auth-token": localStorage.getItem('token')
         },
       }
     );
@@ -33,8 +32,7 @@ const NoteState = (props) => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "auth-token":
-          "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY1MWRjZjc4ZWE3YjIxMmY1MjE5Y2Y4In0sImlhdCI6MTcxNzI1NDQ0Mn0.C26YmvCYh2SO2YelkKJwb4MPT8HS_lVia0ae9ehwkrs",
+        "auth-token": localStorage.getItem('token')
       },
 
       body: JSON.stringify({ title, description, tag }),
@@ -45,7 +43,8 @@ const NoteState = (props) => {
     console.log("adding a note");
     const note = {
       _id: json._id,
-      user: "6651dcf78ea7b212f5219cf8",
+      // user: "6651dcf78ea7b212f5219cf8",
+      user: json.user,
       title: title,
       description: description,
       tag: tag,
@@ -66,8 +65,7 @@ const NoteState = (props) => {
         method: "DELETE",
         headers: {
           "Content-Type": "application/json",
-          "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY1MWRjZjc4ZWE3YjIxMmY1MjE5Y2Y4In0sImlhdCI6MTcxNzI1NDQ0Mn0.C26YmvCYh2SO2YelkKJwb4MPT8HS_lVia0ae9ehwkrs",
+          "auth-token": localStorage.getItem('token')
         },
       }
     );
@@ -92,7 +90,7 @@ const NoteState = (props) => {
         headers: {
           "Content-Type": "application/json",
           "auth-token":
-            "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjY1MWRjZjc4ZWE3YjIxMmY1MjE5Y2Y4In0sImlhdCI6MTcxNzI1NDQ0Mn0.C26YmvCYh2SO2YelkKJwb4MPT8HS_lVia0ae9ehwkrs",
+            localStorage.getItem('token')
         },
 
         body: JSON.stringify({ title, description, tag }),

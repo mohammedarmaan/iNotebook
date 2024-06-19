@@ -1,13 +1,19 @@
 import { React, useEffect } from "react";
 
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const Navbar = () => {
   let location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     console.log(location.pathname);
   }, [location]);
+
+  const handleSignout = () => {
+    localStorage.removeItem("token");
+    navigate("/signin");
+  };
 
   return (
     <nav className="navbar navbar-expand-lg  navbar-dark bg-dark">
@@ -29,29 +35,57 @@ const Navbar = () => {
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === "/" ? "active" : ""}`} aria-current="page" to="/">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/" ? "active" : ""
+                }`}
+                aria-current="page"
+                to="/"
+              >
                 Home
               </Link>
             </li>
             <li className="nav-item">
-              <Link className={`nav-link ${location.pathname === "/about" ? "active" : ""}`}  to="/about">
+              <Link
+                className={`nav-link ${
+                  location.pathname === "/about" ? "active" : ""
+                }`}
+                to="/about"
+              >
                 About
               </Link>
             </li>
           </ul>
-          <form className="d-flex" role="search">
-            
-            <Link to="signup" className="btn btn-outline-primary mx-2" type="submit">
-              Sign up
-            </Link>
-            <Link to="signin" className="btn btn-outline-primary mx-2" type="submit">
-              sign in 
-            </Link>
-          </form>
+
+          {localStorage.getItem("token") ? (
+            <button
+              className="btn btn-outline-danger mx-2"
+              type="submit"
+              onClick={handleSignout}
+            >
+              Sign out
+            </button>
+          ) : (
+            <form className="d-flex" role="search">
+              <Link
+                to="signup"
+                className={`btn ${location.pathname === "/signup"?"btn-primary":"btn-outline-primary"} mx-2`}
+                type="submit"
+              >
+                Sign up
+              </Link>
+              <Link
+                to="signin"
+                className={`btn ${location.pathname === "/signin"?"btn-primary":"btn-outline-primary"} mx-2`}
+                type="submit"
+              >
+                sign in
+              </Link>
+            </form>
+          )}
         </div>
       </div>
     </nav>
   );
 };
-
 export default Navbar;

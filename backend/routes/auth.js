@@ -44,6 +44,7 @@ router.post(
       let user = await User.findOne({ email: req.body.email });
       // if user exists...
       if (user) {
+        success = false
         return res
           .status(400)
           .json({ success, error: "Sorry! User with this email already exists" });
@@ -104,6 +105,7 @@ router.post(
 
       // If user doesn't exist
       if (!user) {
+        success = false;
         return res.status(400).json({ success, error: "login credentials are wrong" });
       }
 
@@ -113,6 +115,7 @@ router.post(
 
       // If password doesn't match
       if (!passwordCompare) {
+        success = false;
         return res.status(400).json({success, error: "login credentials are wrong" });
       }
 

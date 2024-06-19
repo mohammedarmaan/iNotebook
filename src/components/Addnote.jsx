@@ -1,17 +1,21 @@
 import {React, useContext, useState} from "react";
 import noteContext from '../context/notes/noteContext'
 
-const Addnote = () => {
+const Addnote = ({showAlert}) => {
     const context = useContext(noteContext)
     const [note, setNote] = useState({title: "", description: "", tag: ""}) // REMOVE TAG FROM HERE AND U GET DEFAULT AS "GENERAL" WHICH IS HOW IT IS ON MODELS
     const {addNote} = context;
 
     const handleClick = (e) => {
-        e.preventDefault();
-        addNote(note.title, note.description, note.tag);
-        setNote({title: "", description: "", tag: ""})
-
-    }
+      e.preventDefault();
+      if (note.title.length < 3 || note.description.length < 5) {
+          showAlert("Title must be at least 3 characters and description at least 5 characters.", "danger");
+          return;
+      }
+      addNote(note.title, note.description, note.tag || "general"); // Default tag as "general" if empty
+      setNote({ title: "", description: "", tag: "" });
+      showAlert("Successfully added note", "success");
+  }
 
     const onChange = (e) => {
       setNote({...note, [e.target.name]: e.target.value});
@@ -35,9 +39,9 @@ const Addnote = () => {
             id="title"
             aria-describedby="emailHelp"
             onChange={onChange}
-            minLength={3}
             value={note.title}
-            requiured
+            required
+            minLength={3}
           />
         </div>
         <div className="mb-3 col-md-6">
@@ -50,12 +54,12 @@ const Addnote = () => {
             name="description"
             id="desc"
             onChange={onChange}
-            minLength={5}
             value={note.description}
-            requiured
+            required
+            minLength={5}
           />
           <br/>
-          <label htmlFor="description" className="form-label">
+          <label htmlFor="tag" className="form-label">
             tag:
           </label>
           <br/>
@@ -65,7 +69,6 @@ const Addnote = () => {
             id="tag"
             onChange={onChange}
             value={note.tag}
-            requiured
           />
         </div>
         </div>

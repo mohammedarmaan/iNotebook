@@ -2,8 +2,10 @@ import { React, useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/noteContext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
+import { useNavigate } from "react-router-dom";
 
-const Notes = () => {
+const Notes = ( {showAlert} ) => {
+  let navigate = useNavigate();
   const context = useContext(noteContext);
   const { notes, getNotes, editNote } = context;
   const [note, setNote] = useState({
@@ -17,7 +19,12 @@ const Notes = () => {
   const refclose = useRef(null);
 
   useEffect(() => {
-    getNotes();
+    if(localStorage.getItem('token')){
+      getNotes();
+    }
+    else{
+      navigate('/signin')
+    }
   }, []);
 
   const updatenote = (currentnote) => {
@@ -28,12 +35,15 @@ const Notes = () => {
       edescription: currentnote.description,
       etag: currentnote.tag,
     });
+
   };
 
   const handleClick = (e) => {
     editNote(note.id, note.etitle, note.edescription, note.etag);
     e.preventDefault();
     ref.current.click();
+    
+    showAlert("Successfully edited note", "success")
   };
 
   const onChange = (e) => {
@@ -42,7 +52,7 @@ const Notes = () => {
 
   return (
     <>
-      <Addnote />
+      <Addnote showAlert={showAlert} />
 
       <button
         type="button"
@@ -55,26 +65,26 @@ const Notes = () => {
       </button>
 
       <div
-        class="modal fade"
+        className="modal fade"
         id="exampleModal"
-        tabindex="-1"
+        tabIndex="-1"
         aria-labelledby="exampleModalLabel"
         aria-hidden="true"
       >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h1 class="modal-title fs-5" id="exampleModalLabel">
+        <div className="modal-dialog">
+          <div className="modal-content">
+            <div className="modal-header">
+              <h1 className="modal-title fs-5" id="exampleModalLabel">
                 Edit Note
               </h1>
               <button
                 type="button"
-                class="btn-close"
+                className="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
               ></button>
             </div>
-            <div class="modal-body">
+            <div className="modal-body">
               <form>
                 <div className="row">
                   <div className="mb-3 col-md-6">
@@ -119,17 +129,17 @@ const Notes = () => {
                 </div>
               </form>
             </div>
-            <div class="modal-footer">
+            <div className="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                className="btn btn-secondary"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
               <button
                 type="button"
-                class="btn btn-primary"
+                className="btn btn-primary"
                 onClick={handleClick}
                 ref={refclose}
               >
@@ -149,7 +159,7 @@ const Notes = () => {
         <div className="container">{notes.length === 0 && "No notes  "}</div>
         {notes.map((note) => {
           return (
-            <Noteitem key={note._id} note={note} updatenote={updatenote} />
+            <Noteitem key={note._id} note={note} updatenote={updatenote} showAlert={showAlert}/>
           );
         })}
       </div>
