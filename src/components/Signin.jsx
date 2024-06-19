@@ -1,5 +1,5 @@
 import { React, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const Signin = ({ showAlert }) => {
   const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -39,41 +39,7 @@ const Signin = ({ showAlert }) => {
   };
   return (
     <>
-      {/* <div className="container mt-2">
-        <h2>Login to continue....</h2>
-        <form onSubmit={handleSubmit}>
-          <div className="mb-3">
-            <label htmlFor="email" className="form-label">
-              Email address
-            </label>
-            <input
-              type="email"
-              className="form-control"
-              id="email"
-              name="email"
-              placeholder="name@example.com"
-              value={credentials.email}
-              onChange={onChange}
-            />
-          </div>
-          <label htmlFor="password" className="form-label">
-            Password
-          </label>
-          <input
-            type="password"
-            id="password"
-            name="password"
-            className="form-control"
-            aria-describedby="passwordHelpBlock"
-            value={credentials.password}
-            onChange={onChange}
-          />
-
-          <button type="submit" className="btn btn-primary my-2 ">
-            signin
-          </button>
-        </form>
-      </div> */}
+      
        <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
@@ -120,7 +86,7 @@ const Signin = ({ showAlert }) => {
                 </div>
               </form>
               <p className="text-center mt-3">
-                Don't have an account? <a href="/signup">Sign Up</a>
+                Don't have an account? <Link to="/signup">Sign Up</Link>
               </p>
             </div>
           </div>

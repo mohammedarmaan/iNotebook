@@ -1,5 +1,5 @@
 import {React, useState} from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, Link } from 'react-router-dom'
 
 const Signup = ( props ) => {
     const [credentials, setCredentials] = useState({name: "", email: "", password: "", cpassword: ""})
@@ -40,69 +40,7 @@ const Signup = ( props ) => {
       };
   return (
     <>
-    {/* <div className="container mt-2">
-   <form onSubmit={handleSubmit}>
-      <div className="mb-3">
-        <label htmlFor="name" className="form-label">
-          Name
-        </label>
-        <input
-          type="text"
-          className="form-control"
-          id="name"
-          name="name"
-          placeholder="Jason Statham"
-          value={credentials.name}
-        onChange={onChange}
-        required
-        />
-        <label htmlFor="email" className="form-label">
-          Email address
-        </label>
-        <input
-          type="email"
-          className="form-control"
-          id="email"
-          name="email"
-          placeholder="name@example.com"
-          value={credentials.email}
-        onChange={onChange}
-        required
-        minLength={5}
-        />
-      </div>
-      <label htmlFor="password" className="form-label">
-        Password
-      </label>
-      <input
-        type="password"
-        id="password"
-        name="password"
-        className="form-control"
-        aria-describedby="passwordHelpBlock"
-        value={credentials.password}
-        onChange={onChange}
-        required
-        minLength={5}
-        />
-      <label htmlFor="cpassword" className="form-label">
-        Confirm Password
-      </label>
-      <input
-        type="password"
-        id="cpassword"
-        name="cpassword"
-        className="form-control"
-        aria-describedby="passwordHelpBlock"
-        value={credentials.cpassword}
-        onChange={onChange}
-        required
-        minLength={5}
-      />
-
-      <button type="submit" className="btn btn-primary my-2 ">sign-up</button>
-      </form>
-      </div>      */}
+    
       <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-md-6">
@@ -177,7 +115,7 @@ const Signup = ( props ) => {
                 </div>
               </form>
               <p className="text-center mt-3">
-                Already have an account? <a href="/signin">Sign In</a>
+                Already have an account?  <Link to="/signin">Sign In</Link>
               </p>
             </div>
           </div>
