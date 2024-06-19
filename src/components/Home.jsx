@@ -9,10 +9,9 @@ const Home = ({ showAlert }) => {
       ) : (
         <div className="container mt-5">
           <div className="jumbotron text-center">
-            <h1 className="display-4">Welcome to MyApp</h1>
+            <h1 className="display-4">Welcome to Notebook</h1>
             <p className="lead">
-              This is a simple, elegant, and responsive React home page using
-              Bootstrap.
+              Notebook lets users keep notes in a secure place
             </p>
             <hr className="my-4" />
             <p>Explore our features and enjoy a great user experience.</p>
