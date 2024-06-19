@@ -26,6 +26,7 @@ const Signup = ( props ) => {
           if (json.success){                 // redirect to the notes page
             // Save the auth token
             localStorage.setItem("token", json.authtoken)
+            localStorage.setItem("uname", json.uname)
             // Redirect
             navigate("/")
             props.showAlert("Successfully signed up", "success")
