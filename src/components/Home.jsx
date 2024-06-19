@@ -1,5 +1,6 @@
 import { React } from "react";
 import Notes from "./Notes";
+import { Link } from "react-router-dom";
 
 const Home = ({ showAlert }) => {
   return (
@@ -15,12 +16,18 @@ const Home = ({ showAlert }) => {
             </p>
             <hr className="my-4" />
             <p>Explore our features and enjoy a great user experience.</p>
-            <a href="/signup" className="btn btn-primary mx-1">
-              sign up
-            </a>
-            <a href="/signin" className="btn btn-primary">
-              sign in
-            </a>
+            <Link
+              to="/signup"
+              className="btn btn-primary mx-2"
+            >
+              Sign up
+            </Link>
+            <Link
+              to="/signin"
+              className="btn btn-primary mx-2"
+            >
+              Sign in
+            </Link>
           </div>
 
           
