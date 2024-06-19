@@ -67,8 +67,9 @@ router.post(
         },
       };
       const authtoken = jwt.sign(data, jwt_secret);
+      const uname = user.name;
       success = true
-      res.json({ success, authtoken });
+      res.json({ success, authtoken, uname });
 
       // res.json(user);
     } catch (error) {
@@ -126,8 +127,9 @@ router.post(
         },
       };
       const authtoken = jwt.sign(data, jwt_secret);
+      const uname = user.name;
       success = true;
-      res.json({ success, authtoken });
+      res.json({ success, authtoken, uname });
     } catch (error) {
       console.error(error);
       res.status(500).json({ message: "Internal server error occured" });

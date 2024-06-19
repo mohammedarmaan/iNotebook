@@ -25,6 +25,7 @@ const Signin = ({ showAlert }) => {
       // redirect to the notes page
       // Save the auth token
       localStorage.setItem("token", json.authtoken);
+      localStorage.setItem("uname", json.uname)
       // Redirect
       navigate("/");
       showAlert("successfully signed in", "success");
