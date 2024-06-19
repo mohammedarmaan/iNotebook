@@ -12,7 +12,7 @@ const Navbar = () => {
 
   const handleSignout = () => {
     localStorage.removeItem("token");
-    navigate("/signin");
+    navigate("/");
   };
 
   return (

@@ -31,7 +31,7 @@ const Signup = ( props ) => {
             props.showAlert("Successfully signed up", "success")
           }
           else{
-            props.showAlert("Invaild credentials", "danger")
+            props.showAlert("User with this email already exists", "danger")
            
           }
     }
@@ -40,6 +40,7 @@ const Signup = ( props ) => {
       };
   return (
     <>
+    <div className="container mt-2">
    <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">
@@ -101,7 +102,7 @@ const Signup = ( props ) => {
 
       <button type="submit" className="btn btn-primary my-2 ">sign-up</button>
       </form>
-    
+      </div>     
     </>
   )
 }

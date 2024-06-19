@@ -27,6 +27,7 @@ const Signin = ({ showAlert }) => {
       localStorage.setItem("token", json.authtoken);
       // Redirect
       navigate("/");
+      showAlert("successfully signed in", "success");
     } else {
       // alert("wrong credentials")
       showAlert("Wrong credentials", "danger");
@@ -37,38 +38,41 @@ const Signin = ({ showAlert }) => {
   };
   return (
     <>
-      <form onSubmit={handleSubmit}>
-        <div className="mb-3">
-          <label htmlFor="email" className="form-label">
-            Email address
+      <div className="container mt-2">
+        <h2>Login to continue....</h2>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              className="form-control"
+              id="email"
+              name="email"
+              placeholder="name@example.com"
+              value={credentials.email}
+              onChange={onChange}
+            />
+          </div>
+          <label htmlFor="password" className="form-label">
+            Password
           </label>
           <input
-            type="email"
+            type="password"
+            id="password"
+            name="password"
             className="form-control"
-            id="email"
-            name="email"
-            placeholder="name@example.com"
-            value={credentials.email}
+            aria-describedby="passwordHelpBlock"
+            value={credentials.password}
             onChange={onChange}
           />
-        </div>
-        <label htmlFor="password" className="form-label">
-          Password
-        </label>
-        <input
-          type="password"
-          id="password"
-          name="password"
-          className="form-control"
-          aria-describedby="passwordHelpBlock"
-          value={credentials.password}
-          onChange={onChange}
-        />
 
-        <button type="submit" className="btn btn-primary my-2 ">
-          signin
-        </button>
-      </form>
+          <button type="submit" className="btn btn-primary my-2 ">
+            signin
+          </button>
+        </form>
+      </div>
     </>
   );
 };
