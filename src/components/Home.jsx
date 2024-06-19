@@ -23,59 +23,7 @@ const Home = ({ showAlert }) => {
             </a>
           </div>
 
-          <section id="features" className="mt-5">
-            <h2 className="text-center mb-4">Features</h2>
-            <div className="row">
-              <div className="col-md-4">
-                <div className="card mb-4 shadow-sm">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    className="card-img-top"
-                    alt="Feature 1"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Feature 1</h5>
-                    <p className="card-text">Description of feature 1.</p>
-                    <a href="#" className="btn btn-primary">
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="card mb-4 shadow-sm">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    className="card-img-top"
-                    alt="Feature 2"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Feature 2</h5>
-                    <p className="card-text">Description of feature 2.</p>
-                    <a href="#" className="btn btn-primary">
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
-              <div className="col-md-4">
-                <div className="card mb-4 shadow-sm">
-                  <img
-                    src="https://via.placeholder.com/150"
-                    className="card-img-top"
-                    alt="Feature 3"
-                  />
-                  <div className="card-body">
-                    <h5 className="card-title">Feature 3</h5>
-                    <p className="card-text">Description of feature 3.</p>
-                    <a href="#" className="btn btn-primary">
-                      Learn more
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </section>
+          
         </div>
       )}
     </>

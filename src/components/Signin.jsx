@@ -39,7 +39,7 @@ const Signin = ({ showAlert }) => {
   };
   return (
     <>
-      <div className="container mt-2">
+      {/* <div className="container mt-2">
         <h2>Login to continue....</h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-3">
@@ -73,7 +73,60 @@ const Signin = ({ showAlert }) => {
             signin
           </button>
         </form>
+      </div> */}
+       <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h2 className="card-title text-center mb-4">Login to Continue</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    value={credentials.email}
+                    onChange={onChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="form-control"
+                    aria-describedby="passwordHelpBlock"
+                    placeholder="Enter your password"
+                    value={credentials.password}
+                    onChange={onChange}
+                    required
+                    minLength={5}
+                  />
+                </div>
+                <div className="d-grid">
+                  <button type="submit" className="btn btn-primary">
+                    Sign In
+                  </button>
+                </div>
+              </form>
+              <p className="text-center mt-3">
+                Don't have an account? <a href="/signup">Sign Up</a>
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
     </>
   );
 };

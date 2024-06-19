@@ -40,7 +40,7 @@ const Signup = ( props ) => {
       };
   return (
     <>
-    <div className="container mt-2">
+    {/* <div className="container mt-2">
    <form onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="name" className="form-label">
@@ -102,7 +102,88 @@ const Signup = ( props ) => {
 
       <button type="submit" className="btn btn-primary my-2 ">sign-up</button>
       </form>
-      </div>     
+      </div>      */}
+      <div className="container mt-5">
+      <div className="row justify-content-center">
+        <div className="col-md-6">
+          <div className="card shadow-sm">
+            <div className="card-body">
+              <h2 className="card-title text-center mb-4">Create an Account</h2>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-3">
+                  <label htmlFor="name" className="form-label">
+                    Name
+                  </label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="name"
+                    name="name"
+                    placeholder="Jason Statham"
+                    value={credentials.name}
+                    onChange={onChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="email" className="form-label">
+                    Email Address
+                  </label>
+                  <input
+                    type="email"
+                    className="form-control"
+                    id="email"
+                    name="email"
+                    placeholder="name@example.com"
+                    value={credentials.email}
+                    onChange={onChange}
+                    required
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="password" className="form-label">
+                    Password
+                  </label>
+                  <input
+                    type="password"
+                    id="password"
+                    name="password"
+                    className="form-control"
+                    value={credentials.password}
+                    onChange={onChange}
+                    required
+                    minLength={5}
+                  />
+                </div>
+                <div className="mb-3">
+                  <label htmlFor="cpassword" className="form-label">
+                    Confirm Password
+                  </label>
+                  <input
+                    type="password"
+                    id="cpassword"
+                    name="cpassword"
+                    className="form-control"
+                    value={credentials.cpassword}
+                    onChange={onChange}
+                    required
+                    minLength={5}
+                  />
+                </div>
+                <div className="d-grid">
+                  <button type="submit" className="btn btn-primary">
+                    Sign Up
+                  </button>
+                </div>
+              </form>
+              <p className="text-center mt-3">
+                Already have an account? <a href="/signin">Sign In</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
     </>
   )
 }

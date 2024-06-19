@@ -41,8 +41,7 @@ const Addnote = ({ showAlert }) => {
               className="form-control"
               onChange={onChange}
               value={note.title}
-              required
-              minLength={3}
+              
             />
           </div>
           <div className="mb-3 col-md-6">
@@ -56,8 +55,7 @@ const Addnote = ({ showAlert }) => {
               className="form-control"
               onChange={onChange}
               value={note.description}
-              required
-              minLength={5}
+              
             />
           </div>
           <div className="mb-3 col-md-6">
