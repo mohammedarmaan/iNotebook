@@ -40,3 +40,99 @@
 .read-the-docs {
   color: #888;
 } */
+
+
+/* Navbar */
+/* App.css */
+.navbar-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.navbar-nav .nav-link {
+  font-size: 1.1rem;
+  padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link.active {
+  font-weight: bold;
+  border-bottom: 2px solid #fff;
+}
+
+.navbar-text {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.btn {
+  padding: 0.375rem 0.75rem;
+}
+
+.btn-outline-primary {
+  color: #fff;
+  border-color: #0d6efd;
+}
+
+.btn-outline-primary:hover {
+  color: #fff;
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+}
+
+
+/* Notes */
+/* App.css */
+.container {
+  max-width: 900px;
+}
+
+h2 {
+  font-weight: bold;
+  color: #333;
+}
+
+.modal-content {
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.modal-header {
+  border-bottom: none;
+}
+
+.modal-title {
+  color: #007bff;
+  font-size: 1.25rem;
+}
+
+.btn-close {
+  background-color: transparent;
+  border: none;
+}
+
+.form-label {
+  font-weight: bold;
+  color: #555;
+}
+
+.form-control {
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #ced4da;
+}
+
+.modal-footer {
+  border-top: none;
+  padding-top: 0;
+}
+
+.alert {
+  margin-top: 20px;
+}
+
+.notes-list {
+  margin-top: 20px;
+}
+
+
