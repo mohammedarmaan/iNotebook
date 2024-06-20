@@ -60,7 +60,7 @@ const NoteState = (props) => {
   const deleteNote = async (id) => {
     //API call
     const response = await fetch(
-      `https://notebook-api-orpin.vercel.app/notes/deletenote/${id}`,
+      `https://notebook-api-orpin.vercel.app/api/notes/deletenote/${id}`,
       {
         method: "DELETE",
         headers: {
@@ -84,7 +84,7 @@ const NoteState = (props) => {
   const editNote = async (id, title, description, tag) => {
     //API call
     const response = await fetch(
-      `https://notebook-api-orpin.vercel.app/notes/updatenote/${id}`,
+      `https://notebook-api-orpin.vercel.app/api/notes/updatenote/${id}`,
       {
         method: "PUT",
         headers: {
