@@ -18,13 +18,13 @@ const Home = ({ showAlert }) => {
             <p>Explore our features and enjoy a great user experience.</p>
             <Link
               to="/signup"
-              className="btn btn-primary mx-2"
+              className="btn btn-primary mx-3"
             >
               Sign up
             </Link>
             <Link
               to="/signin"
-              className="btn btn-primary mx-2"
+              className="btn btn-primary mx-3"
             >
               Sign in
             </Link>
