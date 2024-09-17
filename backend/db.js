@@ -1,12 +1,12 @@
 
 // Import mongoose
-
+const dotenv = require('dotenv');
+dotenv.config(); // Load environment variables from .env
 const mongoose = require('mongoose')
 
-const mongoURI = "mongodb+srv://armaan0243:test123@cluster0.rlf0pkw.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
-
+// const mongoURI = 
 const connectToMongo = () => {
-    mongoose.connect(mongoURI)
+    mongoose.connect(process.env.MONGODB_URI)
     .then(() => {
         console.log('connected to mongo')
     })
